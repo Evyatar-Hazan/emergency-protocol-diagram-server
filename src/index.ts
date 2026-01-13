@@ -37,4 +37,12 @@ app.use((_req: Request, res: Response) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
+// Start server
+if (require.main === module) {
+  const { config } = require('./config');
+  app.listen(config.port, () => {
+    console.log(`Server running on port ${config.port}`);
+  });
+}
+
 export default app;
